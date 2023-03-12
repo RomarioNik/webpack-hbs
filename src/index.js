@@ -49,3 +49,49 @@ import "./styles/style.css";
 // root.innerHTML = listObj;
 // rootList.innerHTML = frameworksArr;
 // rootList.innerHTML = libArr;
+
+const form = document.querySelector("#form");
+const rootList = document.querySelector("#root > ul");
+
+const LIST_STORAGE = "todoList";
+form.addEventListener("submit", handleSubmitForm);
+addEventListener("DOMContentLoaded", updateListFromLocalStorage);
+
+function handleSubmitForm(e) {
+  e.preventDefault();
+  const value = e.target.elements.question.value;
+
+  if (value) {
+    rootList.insertAdjacentHTML("beforeend", `<li>${value}</li>`);
+    addValueToStorage(value);
+    form.reset();
+  }
+}
+
+function addValueToStorage(value) {
+  const valFromStorage = localStorage.getItem(LIST_STORAGE);
+
+  if (valFromStorage) {
+    let val = JSON.parse(valFromStorage);
+    val = [...val, value];
+    getValueFromStorage(val);
+  } else {
+    const arr = [];
+    arr.push(value);
+    getValueFromStorage(arr);
+  }
+}
+
+function getValueFromStorage(value) {
+  return localStorage.setItem(LIST_STORAGE, JSON.stringify(value));
+}
+
+function updateListFromLocalStorage() {
+  const valFromStorage = localStorage.getItem(LIST_STORAGE);
+
+  if (valFromStorage) {
+    const data = JSON.parse(valFromStorage);
+    const arr = data.map((el) => `<li>${el}</li>`).join("");
+    rootList.insertAdjacentHTML("beforeend", arr);
+  }
+}
