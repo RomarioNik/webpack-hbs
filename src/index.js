@@ -31,5 +31,21 @@
 
 // console.log(sum(2, 3));
 
+import "./styles/style.css";
+// import hbsBase from "./templates/base.hbs";
+// import hbsList from "./templates/list.hbs";
+// import hbsFrame from "./templates/frameworks.hbs";
+// import hbsLibs from "./templates/libs.hbs";
+// import { base, list, frameworks, libs } from "./data/hbsData";
 
-import './styles/style.css'
+// const root = document.querySelector("#root");
+// const rootList = document.querySelector("#root > ul");
+// const baseObj = hbsBase(base);
+// const listObj = hbsList(list);
+// const frameworksArr = hbsFrame(frameworks);
+// const libArr = hbsLibs(libs);
+
+// rootList.innerHTML = baseObj;
+// root.innerHTML = listObj;
+// rootList.innerHTML = frameworksArr;
+// rootList.innerHTML = libArr;
